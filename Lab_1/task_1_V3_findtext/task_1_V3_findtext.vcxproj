@@ -82,7 +82,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>test.bat "$(TargetPath)"</Command>
+      <Command>tests\test.bat "$(TargetPath)"</Command>
       <Message>Running tests</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -102,7 +102,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>test.bat "$(TargetPath)"</Command>
+      <Command>tests\test.bat "$(TargetPath)"</Command>
       <Message>Running tests</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -118,7 +118,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>test.bat "$(TargetPath)"</Command>
+      <Command>tests\test.bat "$(TargetPath)"</Command>
       <Message>Running tests</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -138,7 +138,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
     <PostBuildEvent>
-      <Command>test.bat "$(TargetPath)"</Command>
+      <Command>tests\test.bat "$(TargetPath)"</Command>
       <Message>Running tests</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
@@ -146,10 +146,7 @@
     <ClCompile Include="task_1_V3_findtext.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="test.bat" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="test1.txt" />
+    <Text Include="tests\InvalidArguments.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

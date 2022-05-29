@@ -14,7 +14,7 @@
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
     <Filter Include="Tests">
-      <UniqueIdentifier>{ceacc3a3-0fb9-46da-a07b-a4e8b67a870b}</UniqueIdentifier>
+      <UniqueIdentifier>{9d98388f-688e-4e52-8d1a-2edfdbdaab17}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -23,13 +23,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="test.bat">
-      <Filter>Source Files</Filter>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="test1.txt">
-      <Filter>Tests</Filter>
-    </Text>
+    <Text Include="tests\InvalidArguments.txt" />
   </ItemGroup>
 </Project>

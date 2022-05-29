@@ -11,4 +11,14 @@ int main(int argc, char* argv[])
 		cout << "Usage: findtext.exe <file name> <line to search>" << endl;
 		return 1;
 	}
+
+	std::ifstream file;
+	file.open(argv[1]);
+
+	if (!file.is_open())
+	{
+		cout << "Can not open " << argv[1] << endl;
+		return 1;
+	}
+
 }

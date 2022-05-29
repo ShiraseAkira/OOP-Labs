@@ -3,14 +3,16 @@
 set PROGRAM="%~1"
 set OUT="%TEMP%\out.txt"
 
-REM testing program to tell about invalid usage
+REM testing invalid argument count
 %PROGRAM% > %OUT% && goto error
-fc %OUT% %~dp0InvalidArguments.txt > nil || goto error
+fc %OUT% %~dp0InvalidArguments.txt > NUL || goto error
 
 %PROGRAM% arg1 arg2 arg3 > %OUT% && goto error
-fc %OUT% %~dp0InvalidArguments.txt > nil || goto error
+fc %OUT% %~dp0InvalidArguments.txt > NUL || goto error
 
-
+REM testing file open fail
+%PROGRAM% NonExistingFile.txt "some string" > %OUT% && goto error
+fc %OUT% %~dp0FileOpenFail.txt > NUL|| goto error
 
 
 echo All tests passed

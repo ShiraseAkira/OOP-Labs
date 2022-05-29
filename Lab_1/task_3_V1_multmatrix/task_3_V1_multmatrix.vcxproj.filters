@@ -15,8 +15,24 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="invert.cpp">
+    <ClCompile Include="multmatrix.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tests\test.bat">
+      <Filter>Source Files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="tests\InvalidArguments.txt" />
+    <Text Include="tests\matrix_1_1.txt" />
+    <Text Include="tests\matrix_1_2.txt" />
+    <Text Include="tests\FileOpenFail.txt" />
+    <Text Include="tests\result_1.txt" />
+    <Text Include="tests\matrix_2_1.txt" />
+    <Text Include="tests\result_2.txt" />
+    <Text Include="tests\matrix_3_1.txt" />
+    <Text Include="tests\result_3.txt" />
   </ItemGroup>
 </Project>

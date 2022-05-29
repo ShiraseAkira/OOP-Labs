@@ -9,7 +9,7 @@ optional<int> ParseArgs(int argc, char* argv[])
 	if (argc != 2)
 	{
 		cout << "Invalid arguments count\n";
-		cout << "Usage: flipbyte.exe.exe <input byte>" << endl;
+		cout << "Usage: flipbyte.exe <input byte>" << endl;
 		return nullopt;
 	}
 
@@ -51,7 +51,6 @@ int main(int argc, char* argv[])
 	}
 
 	cout << result;
-
 	return 0;
 }
 

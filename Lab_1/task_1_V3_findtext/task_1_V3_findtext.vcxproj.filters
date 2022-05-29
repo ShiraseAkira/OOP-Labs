@@ -18,7 +18,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="task_1_V3_findtext.cpp">
+    <ClCompile Include="findtext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

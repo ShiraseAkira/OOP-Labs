@@ -1,2 +1,2 @@
 Invalid arguments count
-Usage: flipbyte.exe.exe <input byte>
+Usage: flipbyte.exe <input byte>

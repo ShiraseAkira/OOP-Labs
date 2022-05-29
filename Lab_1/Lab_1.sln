@@ -7,6 +7,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task_1_V3_findtext", "task_
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task_2_V5_flipbyte", "task_2_V5_flipbyte\task_2_V5_flipbyte.vcxproj", "{699A7317-14B4-4B97-9C62-0C5FA26434F1}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "task_3_V1_multmatrix", "task_3_V1_multmatrix\task_3_V1_multmatrix.vcxproj", "{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -31,6 +33,14 @@ Global
 		{699A7317-14B4-4B97-9C62-0C5FA26434F1}.Release|x64.Build.0 = Release|x64
 		{699A7317-14B4-4B97-9C62-0C5FA26434F1}.Release|x86.ActiveCfg = Release|Win32
 		{699A7317-14B4-4B97-9C62-0C5FA26434F1}.Release|x86.Build.0 = Release|Win32
+		{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}.Debug|x64.ActiveCfg = Debug|x64
+		{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}.Debug|x64.Build.0 = Debug|x64
+		{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}.Debug|x86.ActiveCfg = Debug|Win32
+		{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}.Debug|x86.Build.0 = Debug|Win32
+		{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}.Release|x64.ActiveCfg = Release|x64
+		{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}.Release|x64.Build.0 = Release|x64
+		{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}.Release|x86.ActiveCfg = Release|Win32
+		{B27DB2F0-CE13-42DA-AD6E-109AAFDACDF3}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

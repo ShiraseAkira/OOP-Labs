@@ -27,17 +27,16 @@ echo Test 3 passed
 
 REM testing some values
 %PROGRAM% 0 > %OUT% || goto error
-fc %OUT% %~dp00.txt || goto error
+fc %OUT% %~dp00.txt > NUL || goto error
 
 %PROGRAM% 255 > %OUT% || goto error
-fc %OUT% %~dp0255.txt || goto error
+fc %OUT% %~dp0255.txt > NUL || goto error
 
 %PROGRAM% 128 > %OUT% || goto error
-fc %OUT% %~dp0128.txt || goto error
+fc %OUT% %~dp0128.txt > NUL || goto error
 
 %PROGRAM% 6 > %OUT% || goto error
-fc %OUT% %~dp06.txt || goto error
-
+fc %OUT% %~dp06.txt > NUL || goto error
 
 echo All tests passed
 exit /B 0

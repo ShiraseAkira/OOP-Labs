@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="task_2_V5_flipbyte.cpp">
+    <ClCompile Include="flipbyte.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

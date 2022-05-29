@@ -13,23 +13,20 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Tests">
-      <UniqueIdentifier>{9d98388f-688e-4e52-8d1a-2edfdbdaab17}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="task_1_V3_findtext.cpp">
+    <ClCompile Include="task_2_V5_flipbyte.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <Text Include="tests\0.txt" />
     <Text Include="tests\InvalidArguments.txt" />
-    <Text Include="tests\FileOpenFail.txt" />
-    <Text Include="tests\fileWithString.txt" />
-    <Text Include="tests\fileWithString-output.txt" />
-    <Text Include="tests\fileWithMultipleStrings.txt" />
-    <Text Include="tests\fileWithMultipleStrings-output.txt" />
-    <Text Include="tests\stringNotFound.txt" />
+    <Text Include="tests\InvalidArgumentType.txt" />
+    <Text Include="tests\InvalidArgumentValue.txt" />
+    <Text Include="tests\255.txt" />
+    <Text Include="tests\128.txt" />
+    <Text Include="tests\6.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="tests\test.bat">

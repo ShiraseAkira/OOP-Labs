@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{2d30fc50-0e18-478c-a755-d3da8faa68bc}</ProjectGuid>
-    <RootNamespace>task1V3findtext</RootNamespace>
+    <ProjectGuid>{699a7317-14b4-4b97-9c62-0c5fa26434f1}</ProjectGuid>
+    <RootNamespace>task2V5flipbyte</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -84,7 +84,6 @@
     </Link>
     <PostBuildEvent>
       <Command>tests\test.bat "$(TargetPath)"</Command>
-      <Message>Running tests</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -105,7 +104,6 @@
     </Link>
     <PostBuildEvent>
       <Command>tests\test.bat "$(TargetPath)"</Command>
-      <Message>Running tests</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -122,7 +120,6 @@
     </Link>
     <PostBuildEvent>
       <Command>tests\test.bat "$(TargetPath)"</Command>
-      <Message>Running tests</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -143,20 +140,19 @@
     </Link>
     <PostBuildEvent>
       <Command>tests\test.bat "$(TargetPath)"</Command>
-      <Message>Running tests</Message>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="task_1_V3_findtext.cpp" />
+    <ClCompile Include="task_2_V5_flipbyte.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Text Include="tests\FileOpenFail.txt" />
-    <Text Include="tests\fileWithMultipleStrings-output.txt" />
-    <Text Include="tests\fileWithMultipleStrings.txt" />
-    <Text Include="tests\fileWithString-output.txt" />
-    <Text Include="tests\fileWithString.txt" />
+    <Text Include="tests\0.txt" />
+    <Text Include="tests\128.txt" />
+    <Text Include="tests\255.txt" />
+    <Text Include="tests\6.txt" />
     <Text Include="tests\InvalidArguments.txt" />
-    <Text Include="tests\stringNotFound.txt" />
+    <Text Include="tests\InvalidArgumentType.txt" />
+    <Text Include="tests\InvalidArgumentValue.txt" />
   </ItemGroup>
   <ItemGroup>
     <None Include="tests\test.bat" />

@@ -1,0 +1,2 @@
+Invalid argument type
+Argument should be a whole decimal number

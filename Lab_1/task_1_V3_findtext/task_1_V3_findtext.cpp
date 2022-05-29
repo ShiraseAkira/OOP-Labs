@@ -1,7 +1,7 @@
 #include <fstream>
 #include <iostream>
-#include <string>
 #include <optional>
+#include <string>
 
 using namespace std;
 
@@ -11,7 +11,8 @@ struct Args
 	string stringToFind;
 };
 
-optional<Args> ParseArgs(int argc, char* argv[]) {
+optional<Args> ParseArgs(int argc, char* argv[])
+{
 	if (argc != 3)
 	{
 		cout << "Invalid arguments count\n";

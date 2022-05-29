@@ -1,5 +1,6 @@
-#include <iostream>
 #include <fstream>
+#include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -21,4 +22,32 @@ int main(int argc, char* argv[])
 		return 1;
 	}
 
+	string stringToFind = argv[2];
+	string s;
+	bool isFound = false;
+	int count = 1;
+
+	while (getline(file, s))
+	{
+		if (s == stringToFind)
+		{
+			isFound = true;
+			cout << count << endl;
+		}
+		count++;
+	}
+
+	if (file.bad())
+	{
+		cout << "Failed to read data from input file" << endl;
+		return 1;
+	}
+
+	if (!isFound)
+	{
+		cout << "Text not found" << endl;
+		return 1;
+	}
+
+	return 0;
 }

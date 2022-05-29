@@ -25,5 +25,10 @@
   <ItemGroup>
     <Text Include="tests\InvalidArguments.txt" />
     <Text Include="tests\FileOpenFail.txt" />
+    <Text Include="tests\fileWithString.txt" />
+    <Text Include="tests\fileWithString-output.txt" />
+    <Text Include="tests\fileWithMultipleStrings.txt" />
+    <Text Include="tests\fileWithMultipleStrings-output.txt" />
+    <Text Include="tests\stringNotFound.txt" />
   </ItemGroup>
 </Project>

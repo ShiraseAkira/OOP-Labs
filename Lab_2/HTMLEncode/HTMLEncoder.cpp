@@ -6,7 +6,7 @@ std::string HTMLEncode(const std::string& text)
 	int pos;
 	while (pos = s.find_first_of("\"`<>&")) {
 		switch (s[pos]) {
-		case "\"":
+		case "\":
 		}
 	}
 }

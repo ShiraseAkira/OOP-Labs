@@ -25,6 +25,12 @@ optional<Args> ParseArgs(int argc, char* argv[])
 	return args;
 }
 
+bool HasSubstring(const string& haystack, const string& needle)
+{
+	auto pos = haystack.find(needle, 0);
+	return pos != string::npos;
+}
+
 int main(int argc, char* argv[])
 {
 	auto args = ParseArgs(argc, argv);
@@ -48,7 +54,7 @@ int main(int argc, char* argv[])
 
 	while (getline(file, s))
 	{
-		if (s == args->stringToFind)
+		if (HasSubstring(s, args->stringToFind))
 		{
 			isFound = true;
 			cout << count << endl;

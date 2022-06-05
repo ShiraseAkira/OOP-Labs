@@ -81,3 +81,39 @@ SCENARIO("Car can change speed within gear speed limit")
 		}
 	}
 }
+
+SCENARIO("Car on neutral gear can only reduce it's speed")
+{
+	GIVEN("A car with non zero speed on neutral gear")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(1);
+		myCar.SetSpeed(10);
+		myCar.SetGear(0);
+		WHEN("you try to increase speed")
+		{
+			THEN("it doesn't change")
+			{
+				CHECK(!myCar.SetSpeed(20));
+				CHECK(myCar.GetSpeed() == 10);
+			}
+			AND_WHEN("you try to decrease it")
+			{
+				THEN("it does")
+				{
+					CHECK(myCar.SetSpeed(5));
+					CHECK(myCar.GetSpeed() == 5);
+					AND_WHEN("absolute value is increased")
+					{
+						THEN("speed does not change")
+						{
+							CHECK(!myCar.SetSpeed(-10));
+							CHECK(myCar.GetSpeed() == 5);
+						}
+					}
+				}
+			}
+		}
+	}
+}

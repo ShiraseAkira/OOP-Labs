@@ -117,3 +117,144 @@ SCENARIO("Car on neutral gear can only reduce it's speed")
 		}
 	}
 }
+
+SCENARIO("Car can change gear if speed requirement are met")
+{
+	GIVEN("A car with speed")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(1);
+		myCar.SetSpeed(30);
+		WHEN("you change gear")
+		{
+			THEN("it changes if requirements are met")
+			{
+				CHECK(myCar.SetGear(2));
+				CHECK(myCar.GetGear() == 2);
+				CHECK(myCar.SetGear(0));
+				CHECK(myCar.GetGear() == 0);
+				CHECK(myCar.SetGear(3));
+				CHECK(myCar.GetGear() == 3);
+				AND_WHEN("speed requirements are not met")
+				{
+					THEN("it does not change")
+					{
+						CHECK(myCar.GetSpeed() == 30);
+						CHECK(!myCar.SetGear(4));
+						CHECK(myCar.GetGear() == 3);
+					}
+				}
+			}
+		}
+	}
+}
+
+SCENARIO("Car with engine turned off can only change on neutral gear")
+{
+	GIVEN("A car with engine turned off")
+	{
+		Car myCar;
+		WHEN("you change gear on neutral")
+		{
+			THEN("it works")
+			{
+				CHECK(myCar.SetGear(0));
+			}
+		}
+		WHEN("you change gear on 1 or reverse")
+		{
+			THEN("it does not work")
+			{
+				CHECK(!myCar.SetGear(1));
+				CHECK(!myCar.SetGear(-1));
+			}
+		}
+	}
+}
+
+SCENARIO("Car can change gear on reverse only if speed is zero")
+{
+	GIVEN("A car with speed")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(1);
+		myCar.SetSpeed(10);
+		WHEN("you try to change gear on reverse")
+		{
+			THEN("it does not change")
+			{
+				CHECK(!myCar.SetGear(-1));
+				CHECK(myCar.GetGear() == 1);
+				myCar.SetGear(0);
+				CHECK(!myCar.SetGear(-1));
+				CHECK(myCar.GetGear() == 0);
+			}
+		}
+	}
+	GIVEN("A car with speed that moves back on neutral gear")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(-1);
+		myCar.SetSpeed(10);
+		myCar.SetGear(0);
+		WHEN("you try to change gear on reverse")
+		{
+			THEN("it does not change")
+			{
+				CHECK(!myCar.SetGear(-1));
+				CHECK(myCar.GetGear() == 0);
+			}
+		}
+	}
+}
+
+SCENARIO("Car can change reverse gear on gear 1 only if speed is 0")
+{
+	GIVEN("A car with speed that moves back on reverse gear")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(-1);
+		myCar.SetSpeed(10);
+		WHEN("you try to change on gear 1")
+		{
+			THEN("it does not")
+			{
+				CHECK(!myCar.SetGear(1));
+				CHECK(myCar.GetGear() == -1);
+				AND_WHEN("speed is zero")
+				{
+					myCar.SetSpeed(0);
+					THEN("it does")
+					{
+						CHECK(myCar.SetGear(1));
+						CHECK(myCar.GetGear() == 1);
+					}
+				}
+			}
+		}
+	}
+}
+
+SCENARIO("Car that moves back on neutral gear can only change on gear 1 after stop")
+{
+	GIVEN("A car with speed that moves back on neutral gear")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(-1);
+		myCar.SetSpeed(10);
+		myCar.SetGear(0);
+		WHEN("you try to change gear on 1")
+		{
+			THEN("it does not change")
+			{
+				CHECK(!myCar.SetGear(1));
+				CHECK(myCar.GetGear() == 0);
+			}
+		}
+	}
+}

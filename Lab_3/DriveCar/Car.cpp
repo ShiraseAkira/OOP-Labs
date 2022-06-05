@@ -1,12 +1,14 @@
 #include "Car.h"
+#include <iostream>
 
 Car::Car()
 	:m_gear(0)
 	,m_speed(0)
 	,m_isTurnedOn(false)
+	,m_forward(true)
 	,m_gearSpeedMap{
-						{-1, {-20, 0}},
-						{0, {-20, 150}},
+						{-1, {0, 20}},
+						{0, {0, 150}},
 						{1, {0, 30}},
 						{2, {20, 50}},
 						{3, {30, 60}},
@@ -27,18 +29,18 @@ bool Car::IsTurnedOn() const
 
 std::string Car::GetDirection() const
 {
-	if (m_speed > 0) {
+	if (!m_speed) {
+		return std::string("not moving");
+	}
+	if (m_forward) {
 		return std::string("forward");
 	}
-	if (m_speed < 0) {
-		return std::string("back");
-	}
-	return std::string("not moving");
+		return std::string("back");	
 }
 
 int Car::GetSpeed() const
 {
-	return std::abs(m_speed);
+	return m_speed;
 }
 
 int Car::GetGear() const
@@ -75,14 +77,27 @@ bool Car::SetGear(int gear)
 	}
 
 	if (gear == -1) {
-		if (m_speed == 0) {
-			m_gear = -1;
-			return true;
+		if (m_speed != 0) {
+			return false;
+		}		
+	}
+
+	if (m_gear == -1) {
+		if (gear != 0 && gear != -1) {
+			if (m_speed != 0) {
+				return false;
+			}
 		}
-		return false;
 	}
 
 	if (m_gearSpeedMap[gear][0] <= m_speed && m_speed <= m_gearSpeedMap[gear][1]) {
+		if (gear < 0) {
+			m_forward = false;
+		}
+		if (gear > 0) {
+			m_forward = true;
+		}
+
 		m_gear = gear;
 		return true;
 	}
@@ -91,16 +106,13 @@ bool Car::SetGear(int gear)
 
 bool Car::SetSpeed(int speed) 
 {
+
 	if (m_gearSpeedMap[m_gear][0] <= speed && speed <= m_gearSpeedMap[m_gear][1]) {
-		if ((m_gear == 0) && (std::abs(speed) > std::abs(m_speed))) {
+		if ((m_gear == 0) && (speed > m_speed)) {
 			return false;
 		}
 
-		if ((speed ^ m_speed) < 0) {
-			return false;
-		}
-
-		m_speed = (m_gear == -1) ? -speed : speed;
+		m_speed = speed;
 		return true;
 	}
 	return false;

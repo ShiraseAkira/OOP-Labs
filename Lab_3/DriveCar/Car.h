@@ -2,7 +2,6 @@
 #include <string>
 #include <map>
 #include <vector>
-#include <cmath>
 
 class Car
 {
@@ -23,6 +22,7 @@ private:
 	int m_speed;
 	int m_gear;
 	bool m_isTurnedOn;
+	bool m_forward;
 	std::map<int, std::vector<int>> m_gearSpeedMap;
 };
 

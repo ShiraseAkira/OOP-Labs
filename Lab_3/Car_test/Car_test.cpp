@@ -2,10 +2,54 @@
 #include "../catch.hpp"
 #include "../DriveCar/Car.h"
 
-TEST_CASE("Encoding strings for HTML")
+SCENARIO("Car engine can be turned on and off")
 {
-	SECTION("Empty string encoded as empty string") {
-		std::string s;
-		REQUIRE(HTMLEncode(s) == "");
+	GIVEN("A car with turned off engine")
+	{
+		Car myCar;
+		REQUIRE(!myCar.IsTurnedOn());
+		WHEN("engine is turned on") 
+		{
+			myCar.TurnOnEngine();
+			THEN("it becomes turned on")
+			{
+				CHECK(myCar.IsTurnedOn());
+			}
+
+			AND_WHEN("it's turned off")
+			{
+				myCar.TurnOffEngine();
+				THEN("it becomes turned off")
+				{
+					CHECK(!myCar.IsTurnedOn());
+				}
+			}
+		}
+	}
+}
+
+SCENARIO("Car engine can not be turned off when gear is not neutral or speed is not zero")
+{
+	GIVEN("A car with non neutral gear")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(1);
+		THEN("engine can not be turned off")
+		{
+			CHECK(!myCar.TurnOffEngine());
+		}
+	}
+	GIVEN("A car with non zero speed")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(1);
+		myCar.SetSpeed(10);
+		myCar.SetGear(0);
+		THEN("engine can not be turned off")
+		{
+			CHECK(!myCar.TurnOffEngine());
+		}
 	}
 }

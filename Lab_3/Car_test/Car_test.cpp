@@ -53,3 +53,31 @@ SCENARIO("Car engine can not be turned off when gear is not neutral or speed is 
 		}
 	}
 }
+
+SCENARIO("Car can change speed within gear speed limit")
+{
+	GIVEN("A car with non neutral gear")
+	{
+		Car myCar;
+		myCar.TurnOnEngine();
+		myCar.SetGear(1);
+		THEN("speed can be changed within gear limits")
+		{
+			CHECK(myCar.SetSpeed(10));
+			CHECK(myCar.GetSpeed() == 10);
+			CHECK(myCar.SetSpeed(0));
+			CHECK(myCar.GetSpeed() == 0);
+			CHECK(myCar.SetSpeed(20));
+			CHECK(myCar.GetSpeed() == 20);
+			AND_WHEN("speed is not in gear limits")
+			{
+				THEN("speed is not changed")
+				{
+					CHECK(!myCar.SetSpeed(100));
+					CHECK(myCar.GetSpeed() != 100);
+					CHECK(myCar.GetSpeed() == 20);
+				}
+			}
+		}
+	}
+}

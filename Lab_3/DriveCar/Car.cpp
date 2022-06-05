@@ -91,11 +91,11 @@ bool Car::SetGear(int gear)
 
 bool Car::SetSpeed(int speed) 
 {
-	if (m_gearSpeedMap[m_gear][0] <= m_speed && m_speed <= m_gearSpeedMap[m_gear][1]) {
+	if (m_gearSpeedMap[m_gear][0] <= speed && speed <= m_gearSpeedMap[m_gear][1]) {
 		if (m_gear == 0 && std::abs(speed) > std::abs(m_speed)) {
 			return false;
 		}
-		m_speed = speed;
+		m_speed = (m_gear == -1) ? -speed : speed;
 		return true;
 	}
 	return false;

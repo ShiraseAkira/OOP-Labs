@@ -65,10 +65,12 @@ bool Car::TurnOffEngine()
 
 bool Car::SetGear(int gear)
 {
+	//Есть ли такая передача
 	if (auto it = m_gearSpeedMap.find(gear); it == m_gearSpeedMap.end()) {
 		return false;
 	}
 
+	//При выключенном двигателе только на нейтралку
 	if (!m_isTurnedOn) {
 		if (gear == 0) {
 			return true;
@@ -76,18 +78,25 @@ bool Car::SetGear(int gear)
 		return false;
 	}
 
+	//На задний ход только при нулевой скорости
 	if (gear == -1) {
 		if (m_speed != 0) {
 			return false;
 		}		
 	}
 
+	//С заднего хода только при нулевой скорости
 	if (m_gear == -1) {
 		if (gear != 0 && gear != -1) {
 			if (m_speed != 0) {
 				return false;
 			}
 		}
+	}
+
+	//С нейтралки, пока катишься задом, не уйти
+	if (m_gear == 0 && !m_forward && m_speed) {
+		return false;
 	}
 
 	if (m_gearSpeedMap[gear][0] <= m_speed && m_speed <= m_gearSpeedMap[gear][1]) {

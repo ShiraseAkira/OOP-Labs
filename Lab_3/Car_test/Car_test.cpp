@@ -74,7 +74,6 @@ SCENARIO("Car can change speed within gear speed limit")
 				THEN("speed is not changed")
 				{
 					CHECK(!myCar.SetSpeed(100));
-					CHECK(myCar.GetSpeed() != 100);
 					CHECK(myCar.GetSpeed() == 20);
 				}
 			}
@@ -104,14 +103,6 @@ SCENARIO("Car on neutral gear can only reduce it's speed")
 				{
 					CHECK(myCar.SetSpeed(5));
 					CHECK(myCar.GetSpeed() == 5);
-					AND_WHEN("absolute value is increased")
-					{
-						THEN("speed does not change")
-						{
-							CHECK(!myCar.SetSpeed(-10));
-							CHECK(myCar.GetSpeed() == 5);
-						}
-					}
 				}
 			}
 		}
@@ -254,6 +245,15 @@ SCENARIO("Car that moves back on neutral gear can only change on gear 1 after st
 			{
 				CHECK(!myCar.SetGear(1));
 				CHECK(myCar.GetGear() == 0);
+				AND_WHEN("you stop")
+				{
+					myCar.SetSpeed(0);
+					THEN("you can change it")
+					{
+						CHECK(myCar.SetGear(1));
+						CHECK(myCar.GetGear() == 1);
+					}
+				}
 			}
 		}
 	}

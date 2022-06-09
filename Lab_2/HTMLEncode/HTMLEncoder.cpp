@@ -33,7 +33,7 @@ std::string HTMLEncode(const std::string& text)
 			}
 
 			pos = loc + 1;
-			loc = text.find_first_of("\"`<>&", pos);
+			//loc = text.find_first_of("\"`<>&", pos);
 		}
 	}
 

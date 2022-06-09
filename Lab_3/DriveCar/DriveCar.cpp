@@ -4,18 +4,26 @@
 
 using namespace std;
 
+const string COMMAND_FAILED_MSG = "Command failed because";
+const string ERROR_SPEED_NOT_ZERO = "Speed is not zero";
+const string ERROR_GEAR_NOT_ZERO = "Gear is not zero";
+const string ERROR_SWITCH_REVERSE_ONLY_ZERO_SPEED = "Switch to reverse only with zero speed";
+const string ERROR_GEAR_SPEED_LIMIT = "Speed is not in limits for desired gear";
+const string ERROR_FWD_BEFORE_STOP = "Can not go forward before stop move back";
+const string ERROR_SPEED_UP_ON_NEUTRAL = "Can not increase speed on neutral gear";
+
 void EngineControl(Car& car, bool state = false) {
 	if (state) {
 		car.TurnOnEngine();
 		return;
 	}
 	if (!car.TurnOffEngine()) {
-		cout << "Command failed because\n";
+		cout << COMMAND_FAILED_MSG << endl;
 		if (car.GetSpeed()) {
-			cout << "Speed is not zero\n";
+			cout << ERROR_SPEED_NOT_ZERO << endl;
 		}
 		if (car.GetGear()) {
-			cout << "Gear is not zero\n";
+			cout << ERROR_GEAR_NOT_ZERO << endl;
 		}
 	}
 }
@@ -24,15 +32,15 @@ void GearControl(Car& car) {
 	int gear;
 	cin >> gear;
 	if (!car.SetGear(gear)) {
-		cout << "Command failed because\n";
+		cout << COMMAND_FAILED_MSG << endl;
 		if (gear == -1) {
-			cout << "Switch to reverse only with zero speed\n";
+			cout << ERROR_SWITCH_REVERSE_ONLY_ZERO_SPEED << endl;;
 		}
 		else if (gear != 1) {
-			cout << "Speed is not in limits for desired gear\n";
+			cout << ERROR_GEAR_SPEED_LIMIT << endl;;
 		}
 		else {
-			cout << "Can not go forward before stop\n";
+			cout << ERROR_FWD_BEFORE_STOP << endl;;
 		}
 	}
 }
@@ -41,21 +49,27 @@ void SpeedControl(Car& car) {
 	cin >> speed;
 	
 	if (!car.SetSpeed(speed)) {
-		cout << "Command failed because\n";
+		cout << COMMAND_FAILED_MSG << endl;;
 		if (car.GetGear() == 0) {
-			cout << "Can not increase speed on neutral gear\n";
+			cout << ERROR_SPEED_UP_ON_NEUTRAL << endl;;
 		}
 		else {
-			cout << "Speed is not in limits for current gear\n";
+			cout << ERROR_GEAR_SPEED_LIMIT << endl;;
 		}
 	}
+}
+
+void PrintInfo(Car& const car) {
+	cout << "The engine is turned " << (car.IsTurnedOn() ? "on" : "off") << "\n"
+		<< "The direction is " << car.GetDirection() << "\n"
+		<< "The speed is " << car.GetSpeed() << "\n"
+		<< "The gear is " << car.GetGear() << endl;
 }
 
 int main()
 {
 	Car myCar;
 	string s;
-	bool opSuccess;
 	while (cin >> s) {
 		if (s == "EngineOn") {
 			EngineControl(myCar, true);
@@ -70,10 +84,7 @@ int main()
 			SpeedControl(myCar);
 		}
 		else if (s == "Info") {
-			cout << "The engine is turned " << (myCar.IsTurnedOn() ? "on" : "off") << "\n"
-				<< "The direction is " << myCar.GetDirection() << "\n"
-				<< "The speed is " << myCar.GetSpeed() << "\n"
-				<< "The gear is " << myCar.GetGear() << endl;
+			PrintInfo(myCar);
 		}
 	}
 	return 0;

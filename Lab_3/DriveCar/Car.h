@@ -7,8 +7,6 @@ class Car
 {
 public:
 	Car();
-	~Car();
-
 	bool IsTurnedOn() const;
 	std::string GetDirection() const;
 	int GetSpeed() const;

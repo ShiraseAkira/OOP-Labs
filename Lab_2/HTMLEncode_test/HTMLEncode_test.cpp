@@ -39,7 +39,5 @@ TEST_CASE("Encoding strings for HTML")
 	SECTION("String with multiple characters to encode processed correctly as well") {
 		std::string s("Cat <says> \"Meow\".M & M\'s");
 		REQUIRE(HTMLEncode(s) == "Cat &lt;says&gt; &quot;Meow&quot;.M &amp; M&apos;s");
-	}
-
-	
+	}	
 }

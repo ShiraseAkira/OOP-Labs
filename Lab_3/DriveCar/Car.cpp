@@ -1,5 +1,6 @@
 #include "Car.h"
 #include <iostream>
+//#include <climits>
 
 Car::Car()
 	:m_gear(0)
@@ -9,16 +10,13 @@ Car::Car()
 	,m_gearSpeedMap{
 						{-1, {0, 20}},
 						{0, {0, 150}},
+						//{0, {0, INT_MAX}},
 						{1, {0, 30}},
 						{2, {20, 50}},
 						{3, {30, 60}},
 						{4, {40, 90}},
 						{5, {50, 150}}		
 		}
-{
-}
-
-Car::~Car()
 {
 }
 
@@ -115,8 +113,9 @@ bool Car::SetGear(int gear)
 
 bool Car::SetSpeed(int speed) 
 {
-
 	if (m_gearSpeedMap[m_gear][0] <= speed && speed <= m_gearSpeedMap[m_gear][1]) {
+
+		//Попытка разгона на нейтралке
 		if ((m_gear == 0) && (speed > m_speed)) {
 			return false;
 		}

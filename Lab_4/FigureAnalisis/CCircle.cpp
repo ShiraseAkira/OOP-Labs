@@ -20,7 +20,6 @@ double CCircle::GetRadius() const
 	return m_radius;
 }
 
-
 double CCircle::GetArea() const
 {
 	return M_PI * GetRadius() * GetRadius();

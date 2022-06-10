@@ -26,11 +26,11 @@ int main()
 		return 0;
 	}
 
-	int maxAreaIdx = getMaxAreaShapeIdx(shapes);
-	int minPerimeterIdx = getMinPerimeterShapeIdx(shapes);
+	auto maxAreaShapeIt = getMaxAreaShapeIdx(shapes);
+	auto minPerimeterShapeIt = getMinPerimeterShapeIdx(shapes);
 
-	cout << "This is the shape with the max area:\n" << shapes[maxAreaIdx]->ToString() << endl;
-	cout << "This is the shape with the least perimeter:\n" << shapes[minPerimeterIdx]->ToString() << endl;
+	cout << "This is the shape with the max area:\n" << (* maxAreaShapeIt)->ToString() << endl;
+	cout << "This is the shape with the least perimeter:\n" << (* minPerimeterShapeIt)->ToString() << endl;
 
 	return 0;
 }

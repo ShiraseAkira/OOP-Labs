@@ -76,6 +76,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -93,6 +94,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -110,6 +112,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -127,6 +130,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -139,7 +143,25 @@
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\FigureAnalisis\CCircle.cpp" />
+    <ClCompile Include="..\FigureAnalisis\CLineSegment.cpp" />
+    <ClCompile Include="..\FigureAnalisis\CPoint.cpp" />
+    <ClCompile Include="..\FigureAnalisis\CRectangle.cpp" />
+    <ClCompile Include="..\FigureAnalisis\CTriangle.cpp" />
+    <ClCompile Include="..\FigureAnalisis\IShape.cpp" />
+    <ClCompile Include="..\FigureAnalisis\ISolidShape.cpp" />
+    <ClCompile Include="..\FigureAnalisis\Utils.cpp" />
     <ClCompile Include="FigureAnalisis_test.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\FigureAnalisis\CCircle.h" />
+    <ClInclude Include="..\FigureAnalisis\CLineSegment.h" />
+    <ClInclude Include="..\FigureAnalisis\CPoint.h" />
+    <ClInclude Include="..\FigureAnalisis\CRectangle.h" />
+    <ClInclude Include="..\FigureAnalisis\CTriangle.h" />
+    <ClInclude Include="..\FigureAnalisis\IShape.h" />
+    <ClInclude Include="..\FigureAnalisis\ISolidShape.h" />
+    <ClInclude Include="..\FigureAnalisis\Utils.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

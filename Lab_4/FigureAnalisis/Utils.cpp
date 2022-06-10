@@ -35,7 +35,7 @@ unique_ptr<IShape> readShapeFromStringToVector(string const& s)
 	}
 }
 
-int getMaxAreaShapeIdx(vector<unique_ptr<IShape>>& const vec)
+int getMaxAreaShapeIdx(vector<unique_ptr<IShape>>& vec)
 {
 	vector<unique_ptr<IShape>>::iterator result = max_element(vec.begin(), vec.end(),
 		[](unique_ptr<IShape>& const a, unique_ptr<IShape>& const b)

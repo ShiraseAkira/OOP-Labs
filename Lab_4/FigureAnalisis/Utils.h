@@ -8,5 +8,5 @@
 #include <memory>
 
 std::unique_ptr<IShape> readShapeFromStringToVector(std::string const& s);
-int getMaxAreaShapeIdx(std::vector<std::unique_ptr<IShape>>& const vec);
-int getMinPerimeterShapeIdx(std::vector<std::unique_ptr<IShape>>& const vec);
+int getMaxAreaShapeIdx(std::vector<std::unique_ptr<IShape>>& vec);
+int getMinPerimeterShapeIdx(std::vector<std::unique_ptr<IShape>>&  vec);

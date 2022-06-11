@@ -51,15 +51,15 @@ SCENARIO("Testing overloaded binary +") {
 			CComplex result = c + f;
 			CHECK(result.Im() == 3);
 			CHECK(result.Re() == 4);
-			CHECK(c.GetMagnitude() == 5);
-			CHECK_THAT(c.GetArgument(), Catch::Matchers::WithinAbs(0.6435, 0.0001));
+			CHECK(result.GetMagnitude() == 5);
+			CHECK_THAT(result.GetArgument(), Catch::Matchers::WithinAbs(0.6435, 0.0001));
 		}
 		AND_WHEN("you add complex to float") {
 			CComplex result = f + c;
 			CHECK(result.Im() == 3);
 			CHECK(result.Re() == 4);
-			CHECK(c.GetMagnitude() == 5);
-			CHECK_THAT(c.GetArgument(), Catch::Matchers::WithinAbs(0.6435, 0.0001));
+			CHECK(result.GetMagnitude() == 5);
+			CHECK_THAT(result.GetArgument(), Catch::Matchers::WithinAbs(0.6435, 0.0001));
 		}
 	}
 }

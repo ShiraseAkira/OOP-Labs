@@ -21,3 +21,11 @@ double CComplex::GetArgument()const
 {
 	return atan2(m_im, m_re);
 }
+
+
+CComplex CComplex::operator+(CComplex const& c) const {
+	return CComplex(Re() + c.Re(), Im() + c.Im());
+}
+CComplex operator+(double f, CComplex const& c) {
+	return CComplex(f) + c;
+}

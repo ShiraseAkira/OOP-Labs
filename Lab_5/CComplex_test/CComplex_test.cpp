@@ -165,3 +165,63 @@ SCENARIO("Testing overloaded +=") {
 		}
 	}
 }
+
+SCENARIO("Testing overloaded -=") {
+	GIVEN("2 complex numbers") {
+		CComplex c1(1, 2), c2(3, 4), c3(1, 1);
+		WHEN("you addition assignment them") {
+			c1 -= c2 -= c3;
+			CHECK(c1.Im() == -3);
+			CHECK(c1.Re() == -3);
+		}
+	}
+	GIVEN("complex and float number") {
+		CComplex c(4, 4);
+		double f = 2;
+		WHEN("you addition assignment float to complex") {
+			c -= f -= 3;
+			CHECK(c.Im() == 4);
+			CHECK(c.Re() == -1);
+		}
+	}
+}
+
+SCENARIO("Testing overloaded *=") {
+	GIVEN("2 complex numbers") {
+		CComplex c1(1, 2), c2(3, 4), c3(1, 1);
+		WHEN("you addition assignment them") {
+			c1 *= c2 *= c3;
+			CHECK(c1.Im() == 5);
+			CHECK(c1.Re() == -15);
+		}
+	}
+	GIVEN("complex and float number") {
+		CComplex c(4, 4);
+		double f = 2;
+		WHEN("you addition assignment float to complex") {
+			c *= f *= 3;
+			CHECK(c.Im() == 24);
+			CHECK(c.Re() == 24);
+		}
+	}
+}
+
+SCENARIO("Testing overloaded /=") {
+	GIVEN("2 complex numbers") {
+		CComplex c1(1, 2), c2(3, 4), c3(1, 1);
+		WHEN("you addition assignment them") {
+			c1 /= c2 /= c3;
+			CHECK(c1.Im() == -0.18);
+			CHECK(c1.Re() == 0.26);
+		}
+	}
+	GIVEN("complex and float number") {
+		CComplex c(4, 8);
+		double f = 2;
+		WHEN("you addition assignment float to complex") {
+			c /= f /= 4;
+			CHECK(c.Im() == 1);
+			CHECK(c.Re() == 0.5);
+		}
+	}
+}

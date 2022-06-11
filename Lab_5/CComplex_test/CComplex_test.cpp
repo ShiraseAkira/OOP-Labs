@@ -119,3 +119,28 @@ SCENARIO("Testing overloaded binary *") {
 		}
 	}
 }
+
+SCENARIO("Testing overloaded binary /") {
+	GIVEN("2 complex numbers") {
+		CComplex c1(1, 2), c2(3, 4);
+		WHEN("you divide them") {
+			CComplex result = c1 / c2;
+			CHECK(result.Im() == 0.08);
+			CHECK(result.Re() == 0.44);
+		}
+	}
+	GIVEN("complex and float number") {
+		CComplex c(4, 4);
+		double f = 2;
+		WHEN("you multiply float by complex") {
+			CComplex result = c / f;
+			CHECK(result.Im() == 2);
+			CHECK(result.Re() == 2);
+		}
+		AND_WHEN("you multiply complex by float") {
+			CComplex result = f / c;
+			CHECK(result.Im() == -0.25);
+			CHECK(result.Re() == 0.25);
+		}
+	}
+}

@@ -121,3 +121,13 @@ bool operator!= (double f, CComplex const& c)
 {
 	return !(c == f);
 }
+
+// + -
+CComplex CComplex::operator+() const
+{
+	return CComplex(Re(), Im());
+}
+CComplex CComplex::operator-() const
+{
+	return CComplex(-Re(), -Im());
+}

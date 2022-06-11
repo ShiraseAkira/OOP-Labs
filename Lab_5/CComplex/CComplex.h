@@ -23,6 +23,9 @@ public:
 
 	bool operator == (CComplex const& c) const;
 	bool operator != (CComplex const& c) const;
+
+	CComplex operator+() const;
+	CComplex operator-() const;
 private:
 	double m_re, m_im;
 };

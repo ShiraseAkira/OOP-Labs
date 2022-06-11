@@ -243,3 +243,14 @@ SCENARIO("Testing overloaded == !=") {
 		CHECK(n1 == c2);
 	}
 }
+
+SCENARIO("Testing overloaded unar + -") {
+	GIVEN("complex number") {
+		CComplex c1(1, 1);
+		//CComplex cc = +c1;
+		//CComplex* p1 = &c1, *p2 = &cc;
+		CHECK(-c1 == 0 - c1);
+		CHECK(c1 == +c1);
+		//CHECK(p1 != p2);
+	}
+}

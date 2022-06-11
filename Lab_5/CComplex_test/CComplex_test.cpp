@@ -94,3 +94,28 @@ SCENARIO("Testing overloaded binary -") {
 		}
 	}
 }
+
+SCENARIO("Testing overloaded binary *") {
+	GIVEN("2 complex numbers") {
+		CComplex c1(2, 2), c2(3, 3);
+		WHEN("you multiply them") {
+			CComplex result = c1 * c2;
+			CHECK(result.Im() == 12);
+			CHECK(result.Re() == 0);
+		}
+	}
+	GIVEN("complex and float number") {
+		CComplex c(4, 4);
+		double f = 2;
+		WHEN("you multiply float by complex") {
+			CComplex result = c * f;
+			CHECK(result.Im() == 8);
+			CHECK(result.Re() == 8);
+		}
+		AND_WHEN("you multiply complex by float") {
+			CComplex result = f * c;
+			CHECK(result.Im() == 8);
+			CHECK(result.Re() == 8);
+		}
+	}
+}

@@ -125,9 +125,24 @@ bool operator!= (double f, CComplex const& c)
 // + -
 CComplex CComplex::operator+() const
 {
-	return CComplex(Re(), Im());
+	return *this;
 }
 CComplex CComplex::operator-() const
 {
 	return CComplex(-Re(), -Im());
 }
+
+// << >>
+std::ostream& operator<< (std::ostream& stream, CComplex const& c)
+{
+	stream << c.Re()
+		<< ((c.Im() >= 0) ? "+" : "")
+		<< c.Im()
+		<< "i";
+	return stream;
+}
+
+//std::istream& operator>> (std::istream& stream, CComplex const& c)
+//{
+//
+//}

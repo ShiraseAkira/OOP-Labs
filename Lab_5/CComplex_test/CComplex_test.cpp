@@ -1,6 +1,7 @@
 #define CATCH_CONFIG_MAIN
 #include "../catch.hpp"
 #include "../CComplex/CComplex.h"
+#include <sstream>
 
 SCENARIO("Testing basic functionality") {
 	CComplex c0;
@@ -253,4 +254,22 @@ SCENARIO("Testing overloaded unar + -") {
 		CHECK(c1 == +c1);
 		//CHECK(p1 != p2);
 	}
+}
+
+SCENARIO("Testing overloaded << >>") {
+	GIVEN("output string stream") {
+		std::stringstream ss;
+		CComplex ca[6] = { {-3.5, -4.8}, {4, 2}, {-3, 2}, {0, -2}, {0, 0}, {3, -0} };
+		for (int i = 0; i < 6; i++) {
+			ss << ca[i] << "\n";
+		}
+		CHECK(ss.str() == "-3.5-4.8i\n4+2i\n-3+2i\n0-2i\n0+0i\n3+0i\n");
+	}
+	//GIVEN("input string stream") {
+	//	std::stringstream ss("-3.5-4.8i 4+2i -3+2i 3-2i");
+	//	CComplex c;
+	//	while (ss >> c) {
+
+	//	}
+	//}
 }

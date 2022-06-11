@@ -1,4 +1,5 @@
 #pragma once
+#include <iostream>
 class CComplex
 {
 public:
@@ -37,3 +38,6 @@ CComplex operator/ (double f, CComplex const& c);
 
 bool operator == (double f, CComplex const& c);
 bool operator != (double f, CComplex const& c);
+
+std::ostream& operator<< (std::ostream& stream, CComplex const& c);
+//std::istream& operator>> (std::istream& stream, CComplex const& c);

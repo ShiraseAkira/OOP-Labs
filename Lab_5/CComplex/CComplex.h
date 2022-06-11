@@ -16,7 +16,10 @@ public:
 	CComplex operator* (CComplex const& c) const;
 	CComplex operator/ (CComplex const& c) const;
 
-	CComplex operator+= (CComplex const& c);
+	CComplex& operator+= (CComplex const& c);
+	CComplex& operator-= (CComplex const& c);
+	CComplex& operator*= (CComplex const& c);
+	CComplex& operator/= (CComplex const& c);
 private:
 	double m_re, m_im;
 };

@@ -67,10 +67,39 @@ CComplex operator/ (double f, CComplex const& c) {
 	return CComplex(f) / c;
 }
 
-// binary +=
-CComplex CComplex::operator+= (CComplex const& c) {
+// +=
+CComplex& CComplex::operator+= (CComplex const& c) {
 	SetRe(Re() + c.Re());
 	SetIm(Im() + c.Im());
+
+	return *this;
+}
+
+// -=
+CComplex& CComplex::operator-= (CComplex const& c) {
+	SetRe(Re() - c.Re());
+	SetIm(Im() - c.Im());
+
+	return *this;
+}
+
+// *=
+CComplex& CComplex::operator*= (CComplex const& c) {
+	double r = Re() * c.Re() - Im() * c.Im();
+	SetIm(Im() * c.Re() + Re() * c.Im());
+	SetRe(r);
+
+	return *this;
+}
+
+// /=
+CComplex& CComplex::operator/= (CComplex const& c) {
+	double denominator = c.Re() * c.Re() + c.Im() * c.Im();
+	double real = Re() * c.Re() + Im() * c.Im();
+	double image = Im() * c.Re() - Re() * c.Im();
+
+	SetRe(real / denominator);
+	SetIm(image / denominator);
 
 	return *this;
 }

@@ -63,3 +63,34 @@ SCENARIO("Testing overloaded binary +") {
 		}
 	}
 }
+
+SCENARIO("Testing overloaded binary -") {
+	GIVEN("2 complex numbers") {
+		CComplex c1(2, 2), c2(1, 1);
+		WHEN("you subtract them") {
+			CComplex result = c1 - c2;
+			CHECK(result.Im() == 1);
+			CHECK(result.Re() == 1);
+			CHECK_THAT(result.GetMagnitude(), Catch::Matchers::WithinAbs(1.4142, 0.0001));
+			CHECK_THAT(result.GetArgument(), Catch::Matchers::WithinAbs(3.1415 / 4, 0.0001));
+		}
+	}
+	GIVEN("complex and float number") {
+		CComplex c(4, 4);
+		double f = 1;
+		WHEN("you subtract float from complex") {
+			CComplex result = c - f;
+			CHECK(result.Im() == 4);
+			CHECK(result.Re() == 3);
+			CHECK(result.GetMagnitude() == 5);
+			CHECK_THAT(result.GetArgument(), Catch::Matchers::WithinAbs(0.9273, 0.0001));
+		}
+		AND_WHEN("you subtract complex from float") {
+			CComplex result = f - c;
+			CHECK(result.Im() == -4);
+			CHECK(result.Re() == -3);
+			CHECK(result.GetMagnitude() == 5);
+			CHECK_THAT(result.GetArgument(), Catch::Matchers::WithinAbs(0.9273 - 3.1415, 0.0001));
+		}
+	}
+}

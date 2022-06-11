@@ -239,5 +239,7 @@ SCENARIO("Testing overloaded == !=") {
 		CHECK(c1 != n2);
 		CHECK(c2 == n1);
 		CHECK(c2 != n2);
+		CHECK(n1 != c1);
+		CHECK(n1 == c2);
 	}
 }

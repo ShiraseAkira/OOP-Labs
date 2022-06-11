@@ -1,4 +1,5 @@
 #include "CComplex.h"
+#include <cfloat>
 #include <cmath>
 CComplex::CComplex(double real, double image)
 	:m_re(real)
@@ -102,4 +103,21 @@ CComplex& CComplex::operator/= (CComplex const& c) {
 	SetIm(image / denominator);
 
 	return *this;
+}
+
+// ==
+bool CComplex::operator == (CComplex const& c) const {
+	return std::abs(Re() - c.Re()) < DBL_EPSILON && std::abs(Im() - c.Im()) < DBL_EPSILON;
+}
+bool CComplex::operator != (CComplex const& c) const {
+	return !(*this == c);
+}
+
+bool operator== (double f, CComplex const& c)
+{
+	return c == f;
+}
+bool operator!= (double f, CComplex const& c)
+{
+	return !(c == f);
 }

@@ -148,20 +148,20 @@ SCENARIO("Testing overloaded binary /") {
 
 SCENARIO("Testing overloaded +=") {
 	GIVEN("2 complex numbers") {
-		CComplex c1(1, 2), c2(3, 4);
+		CComplex c1(1, 2), c2(3, 4), c3(1, 1);
 		WHEN("you addition assignment them") {
-			c1 += c2;
-			CHECK(c1.Im() == 6);
-			CHECK(c1.Re() == 4);
+			c1 += c2 += c3;
+			CHECK(c1.Im() == 7);
+			CHECK(c1.Re() == 5);
 		}
 	}
 	GIVEN("complex and float number") {
 		CComplex c(4, 4);
 		double f = 2;
 		WHEN("you addition assignment float to complex") {
-			c += f;
+			c += f += 3;
 			CHECK(c.Im() == 4);
-			CHECK(c.Re() == 6);
+			CHECK(c.Re() == 9);
 		}
 	}
 }

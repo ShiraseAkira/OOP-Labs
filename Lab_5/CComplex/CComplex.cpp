@@ -13,6 +13,16 @@ double CComplex::Im()const
 {
 	return m_im;
 }
+
+void CComplex::SetRe(double val)
+{
+	m_re = val;
+}
+void CComplex::SetIm(double val)
+{
+	m_im = val;
+}
+
 double CComplex::GetMagnitude()const
 {
 	return sqrt(pow(m_re, 2) + pow(m_im, 2));
@@ -55,4 +65,12 @@ CComplex CComplex::operator/ (CComplex const& c) const {
 }
 CComplex operator/ (double f, CComplex const& c) {
 	return CComplex(f) / c;
+}
+
+// binary +=
+CComplex CComplex::operator+= (CComplex const& c) {
+	SetRe(Re() + c.Re());
+	SetIm(Im() + c.Im());
+
+	return *this;
 }

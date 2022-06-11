@@ -225,3 +225,19 @@ SCENARIO("Testing overloaded /=") {
 		}
 	}
 }
+
+SCENARIO("Testing overloaded == !=") {
+	GIVEN("2 complex numbers") {
+		CComplex c1(1, 1), c2(1, 1), c3(2, 1);
+		CHECK(c1 == c2);
+		CHECK(c1 != c3);
+	}
+	GIVEN("complex and float numbers") {
+		CComplex c1(4, 8), c2(4);
+		double n1 = 4, n2 = 0;
+		CHECK(c1 != n1);
+		CHECK(c1 != n2);
+		CHECK(c2 == n1);
+		CHECK(c2 != n2);
+	}
+}

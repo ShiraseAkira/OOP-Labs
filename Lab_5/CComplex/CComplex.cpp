@@ -142,7 +142,19 @@ std::ostream& operator<< (std::ostream& stream, CComplex const& c)
 	return stream;
 }
 
-//std::istream& operator>> (std::istream& stream, CComplex const& c)
-//{
-//
-//}
+std::istream& operator>> (std::istream& stream, CComplex & c)
+{
+	double real, image;
+	if ((stream >> real)
+		&& stream >> image
+		&& stream.get() == 'i') 
+	{
+		c = CComplex(real, image);
+	}
+	else
+	{
+		stream.setstate(std::ios::failbit | stream.rdstate());
+	}
+
+	return stream;
+}

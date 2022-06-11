@@ -144,3 +144,24 @@ SCENARIO("Testing overloaded binary /") {
 		}
 	}
 }
+
+
+SCENARIO("Testing overloaded +=") {
+	GIVEN("2 complex numbers") {
+		CComplex c1(1, 2), c2(3, 4);
+		WHEN("you addition assignment them") {
+			c1 += c2;
+			CHECK(c1.Im() == 6);
+			CHECK(c1.Re() == 4);
+		}
+	}
+	GIVEN("complex and float number") {
+		CComplex c(4, 4);
+		double f = 2;
+		WHEN("you addition assignment float to complex") {
+			c += f;
+			CHECK(c.Im() == 4);
+			CHECK(c.Re() == 6);
+		}
+	}
+}

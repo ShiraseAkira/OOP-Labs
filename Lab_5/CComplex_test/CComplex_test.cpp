@@ -2,6 +2,7 @@
 #include "../catch.hpp"
 #include "../CComplex/CComplex.h"
 #include <sstream>
+#include <vector>
 
 SCENARIO("Testing basic functionality") {
 	CComplex c0;
@@ -265,11 +266,14 @@ SCENARIO("Testing overloaded << >>") {
 		}
 		CHECK(ss.str() == "-3.5-4.8i\n4+2i\n-3+2i\n0-2i\n0+0i\n3+0i\n");
 	}
-	//GIVEN("input string stream") {
-	//	std::stringstream ss("-3.5-4.8i 4+2i -3+2i 3-2i");
-	//	CComplex c;
-	//	while (ss >> c) {
-
-	//	}
-	//}
+	GIVEN("input string stream") {
+		std::stringstream ss("-3.5-4.8i 4+2i -3+2i 3-2i");
+		CComplex c;
+		std::vector<CComplex> vc;
+		std::vector<CComplex> vcProper = { {-3.5, -4.8}, {4, 2}, {-3, 2}, {3, -2} };
+		while (ss >> c) {
+			vc.push_back(c);
+		}
+		CHECK_THAT(vc, Catch::Matchers::Equals(vcProper));
+	}
 }

@@ -22,7 +22,7 @@ double CComplex::GetArgument()const
 	return atan2(m_im, m_re);
 }
 
-
+// binary +
 CComplex CComplex::operator+ (CComplex const& c) const {
 	return CComplex(Re() + c.Re(), Im() + c.Im());
 }
@@ -30,7 +30,7 @@ CComplex operator+ (double f, CComplex const& c) {
 	return CComplex(f) + c;
 }
 
-
+// binary -
 CComplex CComplex::operator- (CComplex const& c) const {
 	return CComplex(Re() - c.Re(), Im() - c.Im());
 }
@@ -38,10 +38,21 @@ CComplex operator- (double f, CComplex const& c) {
 	return CComplex(f) - c;
 }
 
-
+// binary *
 CComplex CComplex::operator* (CComplex const& c) const {
 	return CComplex(Re() * c.Re() - Im() * c.Im(), Im() * c.Re() + Re() * c.Im());
 }
 CComplex operator* (double f, CComplex const& c) {
 	return c * f;
+}
+
+// binary /
+CComplex CComplex::operator/ (CComplex const& c) const {
+	double denominator = c.Re()*c.Re() + c.Im()*c.Im();
+	double real = Re() * c.Re() + Im() * c.Im();
+	double image = Im() * c.Re() - Re() * c.Im();
+	return CComplex(real / denominator, image / denominator);
+}
+CComplex operator/ (double f, CComplex const& c) {
+	return CComplex(f) / c;
 }

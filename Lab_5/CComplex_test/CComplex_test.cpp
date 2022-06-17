@@ -134,15 +134,24 @@ SCENARIO("Testing overloaded binary /") {
 	GIVEN("complex and float number") {
 		CComplex c(4, 4);
 		double f = 2;
-		WHEN("you multiply float by complex") {
+		WHEN("you divide float by complex") {
 			CComplex result = c / f;
 			CHECK(result.Im() == 2);
 			CHECK(result.Re() == 2);
 		}
-		AND_WHEN("you multiply complex by float") {
+		AND_WHEN("you divide complex by float") {
 			CComplex result = f / c;
 			CHECK(result.Im() == -0.25);
 			CHECK(result.Re() == 0.25);
+		}
+	}
+	GIVEN("Complex number and 0") {
+		CComplex c(0, 1);
+		double zero = 0;
+		WHEN("you divide number by zero") {
+			THEN("you get an exception") {
+				CHECK_THROWS_AS(c / zero, std::runtime_error);
+			}			
 		}
 	}
 }
@@ -171,7 +180,7 @@ SCENARIO("Testing overloaded +=") {
 SCENARIO("Testing overloaded -=") {
 	GIVEN("2 complex numbers") {
 		CComplex c1(1, 2), c2(3, 4), c3(1, 1);
-		WHEN("you addition assignment them") {
+		WHEN("you subtraction assignment them") {
 			(c1 -= c2) -= c3;
 			CHECK(c1.Im() == -3);
 			CHECK(c1.Re() == -3);
@@ -180,7 +189,7 @@ SCENARIO("Testing overloaded -=") {
 	GIVEN("complex and float number") {
 		CComplex c(4, 4);
 		double f = 2;
-		WHEN("you addition assignment float to complex") {
+		WHEN("you subtraction assignment float to complex") {
 			(c -= f) -= 3;
 			CHECK(c.Im() == 4);
 			CHECK(c.Re() == -1);
@@ -191,7 +200,7 @@ SCENARIO("Testing overloaded -=") {
 SCENARIO("Testing overloaded *=") {
 	GIVEN("2 complex numbers") {
 		CComplex c1(1, 2), c2(3, 4), c3(1, 1);
-		WHEN("you addition assignment them") {
+		WHEN("you multiplication assignment them") {
 			(c1 *= c2) *= c3;
 			CHECK(c1.Im() == 5);
 			CHECK(c1.Re() == -15);
@@ -200,7 +209,7 @@ SCENARIO("Testing overloaded *=") {
 	GIVEN("complex and float number") {
 		CComplex c(4, 4);
 		double f = 2;
-		WHEN("you addition assignment float to complex") {
+		WHEN("you multiplication assignment float to complex") {
 			(c *= f) *= 3;
 			CHECK(c.Im() == 24);
 			CHECK(c.Re() == 24);
@@ -211,7 +220,7 @@ SCENARIO("Testing overloaded *=") {
 SCENARIO("Testing overloaded /=") {
 	GIVEN("2 complex numbers") {
 		CComplex c1(1, 2), c2(3, 4), c3(1, 1);
-		WHEN("you addition assignment them") {
+		WHEN("you division assignment them") {
 			(c1 /= c2) /= c3;
 			CHECK(c1.Im() == -0.18);
 			CHECK(c1.Re() == 0.26);
@@ -220,10 +229,19 @@ SCENARIO("Testing overloaded /=") {
 	GIVEN("complex and float number") {
 		CComplex c(4, 8);
 		double f = 2;
-		WHEN("you addition assignment float to complex") {
+		WHEN("you division assignment float to complex") {
 			(c /= f) /= 4;
 			CHECK(c.Im() == 1);
 			CHECK(c.Re() == 0.5);
+		}
+	}
+	GIVEN("Complex number and 0") {
+		CComplex c(0, 1);
+		double zero = 0;
+		WHEN("you division assignment float to complex") {
+			THEN("you get an exception") {
+				CHECK_THROWS_AS((c /= zero) /= 4 , std::runtime_error);
+			}
 		}
 	}
 }

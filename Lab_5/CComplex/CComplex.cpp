@@ -1,6 +1,9 @@
 #include "CComplex.h"
 #include <cfloat>
 #include <cmath>
+
+#include <stdexcept>
+
 CComplex::CComplex(double real, double image)
 	:m_re(real)
 	,m_im(image)
@@ -60,6 +63,12 @@ CComplex operator* (double f, CComplex const& c) {
 // binary /
 CComplex CComplex::operator/ (CComplex const& c) const {
 	double denominator = c.Re()*c.Re() + c.Im()*c.Im();
+
+	// division by 0
+	if (!denominator) {
+		throw std::runtime_error("Attempted to divide by zero");
+	}
+
 	double real = Re() * c.Re() + Im() * c.Im();
 	double image = Im() * c.Re() - Re() * c.Im();
 	return CComplex(real / denominator, image / denominator);
@@ -96,6 +105,12 @@ CComplex& CComplex::operator*= (CComplex const& c) {
 // /=
 CComplex& CComplex::operator/= (CComplex const& c) {
 	double denominator = c.Re() * c.Re() + c.Im() * c.Im();
+
+	// division by 0
+	if (!denominator) {
+		throw std::runtime_error("Attempted to divide by zero");
+	}
+
 	double real = Re() * c.Re() + Im() * c.Im();
 	double image = Im() * c.Re() - Re() * c.Im();
 
